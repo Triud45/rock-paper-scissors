@@ -1,8 +1,10 @@
 /* 0 = rock  1 = paper  2 = scissors*/
-let humanScore = 0;
-let computerScore = 0;
+
 let humanChoice;
 let computerChoice
+
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() 
 {
@@ -41,7 +43,6 @@ function playRound(humanChoice, computerChoice)
     if(humanChoice === computerChoice)
     {
         alert('Tie! Try again');
-        playGame();
     }
     else if(humanChoice === 0 && computerChoice === 1)
     {
@@ -67,9 +68,32 @@ function playRound(humanChoice, computerChoice)
 
 function playGame()
 {
-    humanChoice = getHumanChoice(prompt('Please choose Rock, Paper, or Scissors and enter it below'));
-    computerChoice = getComputerChoice();
-    playRound(humanChoice, computerChoice);
+    let numScore = 0;
+
+    while(numScore < 5)
+    {
+        numScore++;
+        humanChoice = getHumanChoice(prompt('Please choose Rock, Paper, or Scissors and enter it below'));
+        computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+    }
+
+    if(numScore === 5)
+    {
+        if(humanScore > computerScore)
+        {
+            alert('Congratulations, you won! ' + humanScore + ":" + computerScore);
+        }
+        else if(humanScore < computerScore)
+        {
+            alert('Sorry, you lost. Better luck next time! ' + humanScore + ":" + computerScore);
+        }
+        else
+        {
+            alert('How rare, you tied! '  + humanScore + ":" + computerScore);
+        }
+
+    }
 }
 
 playGame();
