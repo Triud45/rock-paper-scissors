@@ -41,6 +41,7 @@ function playRound(humanChoice, computerChoice)
     if(humanChoice === computerChoice)
     {
         alert('Tie! Try again');
+        playGame();
     }
     else if(humanChoice === 0 && computerChoice === 1)
     {
@@ -67,10 +68,11 @@ function playRound(humanChoice, computerChoice)
 function playGame()
 {
     humanChoice = getHumanChoice(prompt('Please choose Rock, Paper, or Scissors and enter it below'));
-
+    computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
 }
 
-console.log(getHumanChoice(prompt('Please choose Rock, Paper, or Scissors and enter it below')));
+playGame();
 
 
 
