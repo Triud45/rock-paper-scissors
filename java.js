@@ -6,6 +6,14 @@ let computerChoice
 let humanScore = 0;
 let computerScore = 0;
 
+const directionText = document.querySelector('.directionText');
+const startButton = document.querySelector('#startButton');
+const rockButton = document.querySelector('.rockButton');
+const paperButton = document.querySelector('.paperButton');
+const scissorButton = document.querySelector('scissorButton');
+
+startButton.addEventListener ('click', playGame);
+
 function getComputerChoice() 
 {
     return Math.floor(Math.random() * 3);
@@ -96,7 +104,8 @@ function playGame()
     }
 }
 
-playGame();
+
+
 
 
 
