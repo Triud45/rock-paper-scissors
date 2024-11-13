@@ -6,11 +6,16 @@ let computerChoice
 let humanScore = 0;
 let computerScore = 0;
 
+const rock = 0;
+const paper = 1;
+const scissors =2;
+
 const directionText = document.querySelector('.directionText');
 const startButton = document.querySelector('#startButton');
 const rockButton = document.querySelector('.rockButton');
 const paperButton = document.querySelector('.paperButton');
-const scissorButton = document.querySelector('scissorButton');
+const scissorButton = document.querySelector('.scissorButton');
+const outcome = document.createElement('div');
 
 startButton.addEventListener ('click', playGame);
 
@@ -38,67 +43,77 @@ function getHumanChoice(choice)
         rps = 2;
         return rps;
     }
-    else
-    {
-        rps = 0;
-        alert('You entered an invalid choice, rock is chosen by defualt');
-        return rps;
-    }
 }
 
 function playRound(humanChoice, computerChoice)
 {
     if(humanChoice === computerChoice)
     {
-        alert('Tie! Try again');
+        outcome.textContent = 'Tie! Try again';
     }
-    else if(humanChoice === 0 && computerChoice === 1)
+    else if(humanChoice === rock && computerChoice === paper)
     {
-        alert('You lose! Paper beats Rock');
+        outcome.textContent = 'You lose! Paper beats Rock';
         computerScore++;
     }
-    else if(humanChoice === 1 && computerChoice === 2)
+    else if(humanChoice === paper && computerChoice === scissors)
     {
-        alert('You lose! Scissors beats Paper');
+        outcome.textContent = 'You lose! Scissors beats Paper';
         computerScore++;
     }
-    else if(humanChoice === 2 && computerChoice === 0)
+    else if(humanChoice === scissors && computerChoice === rock)
     {
-        alert('You lose! Rock beats Scissors');
+        outcome.textContent = 'You lose! Rock beats Scissors';
         computerScore++;
     }
     else
     {
-        alert('You win!');
+        outcome.textContent = 'You win!';
         humanScore++;
     }
 }
 
 function playGame()
 {
+    directionText.textContent = 'Select Rock, Paper, or Scissors';
     let numScore = 0;
 
-    while(numScore < 5)
-    {
-        numScore++;
-        humanChoice = getHumanChoice(prompt('Please choose Rock, Paper, or Scissors and enter it below'));
-        computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-    }
+
+        rockButton.addEventListener('click',function(){
+            console.log('Clicked Rock');
+            humanChoice = rock;
+            computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            numScore++;
+        })
+        paperButton.addEventListener('click',function(){
+            console.log("Clicked Paper");
+            humanChoice = paper;
+            computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            numScore++;
+        })
+        scissorButton.addEventListener('click',function(){
+            console.log("Clicked Paper");
+            humanChoice = scissors;
+            computerChoice = getComputerChoice();
+            playRound(humanChoice, computerChoice);
+            numScore++;
+        })
 
     if(numScore === 5)
     {
         if(humanScore > computerScore)
         {
-            alert('Congratulations, you won! ' + humanScore + ":" + computerScore);
+            outcome.textContent = 'Congratulations, you won! ' + humanScore + ":" + computerScore;
         }
         else if(humanScore < computerScore)
         {
-            alert('Sorry, you lost. Better luck next time! ' + humanScore + ":" + computerScore);
+            outcome.textContent = 'Sorry, you lost. Better luck next time! ' + humanScore + ":" + computerScore;
         }
         else
         {
-            alert('How rare, you tied! '  + humanScore + ":" + computerScore);
+            outcome.textContent = 'How rare, you tied! '  + humanScore + ":" + computerScore;
         }
 
     }
