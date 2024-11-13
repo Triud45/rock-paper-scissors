@@ -15,8 +15,14 @@ const startButton = document.querySelector('#startButton');
 const rockButton = document.querySelector('.rockButton');
 const paperButton = document.querySelector('.paperButton');
 const scissorButton = document.querySelector('.scissorButton');
-const outcome = document.createElement('div');
 const body = document.querySelector('.body');
+
+const outcome = document.createElement('div');
+outcome.style.cssText = `
+display: flex;
+justify-Content: center;
+font-size: 35px;
+margin: 20px;`;
 
 body.appendChild(outcome);
 startButton.addEventListener ('click', playGame);
@@ -49,7 +55,7 @@ function getHumanChoice(choice)
 
 function playRound(humanChoice, computerChoice, numScore)
 {
-    if(numScore < 5){
+    if(numScore < 4){
         if(humanChoice === computerChoice)
         {
             outcome.textContent = 'Tie! Try again';

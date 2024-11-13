@@ -1,0 +1,23 @@
+.directionText{
+    display: flex;
+    font-weight: bold;
+    font-size: 35px;
+    justify-content: center;
+}
+
+button{
+    padding: 20px;
+    font-size: 25px;
+    margin: 20px;
+    width: 140px;
+}
+
+.start{
+    display: flex;
+    justify-content: center;
+}
+.choiceButtons{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
