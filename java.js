@@ -25,7 +25,12 @@ font-size: 35px;
 margin: 20px;`;
 
 body.appendChild(outcome);
-startButton.addEventListener ('click', playGame);
+startButton.addEventListener ('click', function(){
+    startButton.textContent = 'Restart';
+    humanScore = 0;
+    computerScore = 0;
+    playGame();
+});
 
 function getComputerChoice() 
 {
